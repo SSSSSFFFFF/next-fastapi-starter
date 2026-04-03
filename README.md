@@ -35,7 +35,7 @@
 ### 🚀 快速开始
 
 ```bash
-git clone https://github.com/SSSSSFFFFF/next-fastapi-starter.git
+git clone https://github.com/YOUR_USERNAME/next-fastapi-starter.git
 cd next-fastapi-starter
 docker compose up --build
 ```
