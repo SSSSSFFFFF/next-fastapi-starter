@@ -1,16 +1,46 @@
+version: "3.9"
+
 services:
-  db:
+  postgres:
     image: postgres:16
     container_name: colvor-postgres
     restart: unless-stopped
     environment:
+      POSTGRES_DB: colvor
       POSTGRES_USER: colvor
       POSTGRES_PASSWORD: colvor123
-      POSTGRES_DB: colvor_db
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build: ./api
+    container_name: colvor-api
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgresql://colvor:colvor123@postgres:5432/colvor
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./api:/app
+
+  web:
+    build: ./web
+    container_name: colvor-web
+    restart: unless-stopped
+    depends_on:
+      - api
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./web:/app
+      - /app/node_modules
+      - /app/.next
 
 volumes:
   postgres_data:
