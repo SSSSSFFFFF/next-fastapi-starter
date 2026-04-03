@@ -1,84 +1,63 @@
 # 🚀 next-fastapi-starter
 
-> 一个基于 **Next.js + FastAPI + PostgreSQL + Docker** 的现代全栈开发模板
-> A modern full-stack starter powered by **Next.js + FastAPI + PostgreSQL + Docker**
+<p align="right">
+  <a href="#english">English</a> | 
+  <a href="#中文">中文</a>
+</p>
 
 ---
 
-## ✨ 项目特点 | Features
+## 中文
+
+### ✨ 项目特点
 
 * ⚡ 前端：Next.js（App Router）
-  Frontend: Next.js (App Router)
-
-* 🐍 后端：FastAPI（高性能 API）
-  Backend: FastAPI (high-performance API)
-
+* 🐍 后端：FastAPI
 * 🗄️ 数据库：PostgreSQL
-  Database: PostgreSQL
-
 * 🐳 Docker Compose 一键启动
-  One-command startup with Docker Compose
-
-* 🔄 支持前后端热更新
-  Hot reload for both frontend and backend
-
-* 🧱 清晰结构，适合快速开发 MVP
-  Clean structure for rapid MVP development
+* 🔄 支持热更新
+* 🧱 适合快速开发 MVP
 
 ---
 
-## 📁 项目结构 | Project Structure
+### 📁 项目结构
 
-```bash
+```
 .
-├── api/                  # FastAPI backend
-├── web/                  # Next.js frontend
+├── api/          # FastAPI 后端
+├── web/          # Next.js 前端
 ├── docker-compose.yml
 └── README.md
 ```
 
 ---
 
-## 🚀 快速开始 | Quick Start
-
-### 1️⃣ 克隆项目 | Clone the repository
+### 🚀 快速开始
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/next-fastapi-starter.git
 cd next-fastapi-starter
-```
-
----
-
-### 2️⃣ 一键启动 | Start everything
-
-```bash
 docker compose up --build
 ```
 
 ---
 
-### 3️⃣ 访问服务 | Access services
+### 🌐 访问
 
-* 前端 Frontend
-  👉 http://localhost:3000
-
-* 后端 Backend
-  👉 http://localhost:8000
+* 前端：http://localhost:3000
+* 后端：http://localhost:8000
 
 ---
 
-## ⚙️ 环境变量 | Environment Variables
+### ⚙️ 环境变量
 
-### 后端 Backend (`api/.env`)
+**api/.env**
 
 ```env
 DATABASE_URL=postgresql://colvor:colvor123@postgres:5432/colvor
 ```
 
----
-
-### 前端 Frontend (`web/.env.local`)
+**web/.env.local**
 
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:8000
@@ -86,7 +65,7 @@ NEXT_PUBLIC_API_URL=http://localhost:8000
 
 ---
 
-## 🔗 前后端通信 | Frontend ↔ Backend
+### 🔗 前后端通信
 
 ```ts
 fetch(process.env.NEXT_PUBLIC_API_URL + "/")
@@ -94,32 +73,27 @@ fetch(process.env.NEXT_PUBLIC_API_URL + "/")
 
 ---
 
-## 🐳 Docker 说明 | Docker Services
+### 🐳 服务说明
 
-* `postgres` → 数据库 / Database
-* `api` → 后端服务 / Backend service
-* `web` → 前端服务 / Frontend service
+* `postgres`：数据库
+* `api`：后端
+* `web`：前端
 
-服务之间通过 **服务名通信**
-Services communicate via **service names (not localhost)**
+服务之间通过服务名通信（不要用 localhost）
 
 ---
 
-## 🧠 本地开发 | Local Development
-
-### 前端 Frontend
+### 🧠 本地开发
 
 ```bash
+# frontend
 cd web
 npm install
 npm run dev
 ```
 
----
-
-### 后端 Backend
-
 ```bash
+# backend
 cd api
 pip install -r requirements.txt
 uvicorn main:app --reload
@@ -127,25 +101,102 @@ uvicorn main:app --reload
 
 ---
 
-## 📌 TODO
+## English
 
-* [ ] 用户系统（登录 / 注册）
-* [ ] 数据库模型设计
-* [ ] API 权限控制
-* [ ] 前端接口封装
-* [ ] 部署上线（VPS / Cloud）
+### ✨ Features
+
+* ⚡ Next.js frontend (App Router)
+* 🐍 FastAPI backend
+* 🗄️ PostgreSQL database
+* 🐳 One-command startup with Docker Compose
+* 🔄 Hot reload support
+* 🧱 Clean structure for MVP development
+
+---
+
+### 📁 Project Structure
+
+```
+.
+├── api/          # FastAPI backend
+├── web/          # Next.js frontend
+├── docker-compose.yml
+└── README.md
+```
+
+---
+
+### 🚀 Quick Start
+
+```bash
+git clone https://github.com/YOUR_USERNAME/next-fastapi-starter.git
+cd next-fastapi-starter
+docker compose up --build
+```
+
+---
+
+### 🌐 Access
+
+* Frontend: http://localhost:3000
+* Backend: http://localhost:8000
+
+---
+
+### ⚙️ Environment Variables
+
+**api/.env**
+
+```env
+DATABASE_URL=postgresql://colvor:colvor123@postgres:5432/colvor
+```
+
+**web/.env.local**
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8000
+```
+
+---
+
+### 🔗 Frontend ↔ Backend
+
+```ts
+fetch(process.env.NEXT_PUBLIC_API_URL + "/")
+```
+
+---
+
+### 🐳 Services
+
+* `postgres`: database
+* `api`: backend
+* `web`: frontend
+
+Services communicate via service names (not localhost)
+
+---
+
+### 🧠 Local Development
+
+```bash
+# frontend
+cd web
+npm install
+npm run dev
+```
+
+```bash
+# backend
+cd api
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
 
 ---
 
 ## 📄 License
 
 MIT
-
----
-
-## 💡 项目定位 | About
-
-这是一个用于快速构建 AI 工具 / SaaS 产品的基础模板
-This is a starter template for building AI tools and SaaS products quickly
 
 ---
